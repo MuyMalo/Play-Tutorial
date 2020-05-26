@@ -36,4 +36,13 @@ public class Post extends Model {
         this.save();
         return this;
     }
+
+    //got an error about using just ? instead of ?1
+    public Post previous() {
+        return Post.find("postedAt < ?1 order by postedAt desc", postedAt).first();
+    }
+
+    public Post next() {
+        return Post.find("postedAt > ?1 order by postedAt asc", postedAt).first();
+    }
 }
