@@ -1,8 +1,14 @@
 Play-Tutorial.iml
 .idea/
 
-/tmp
-/modules
-/lib
-/test-result
-/logs
+yabe/tmp
+yabe/modules
+yabe/lib
+yabe/test-result
+yabe/logs
+
+helloworld/tmp
+helloworld/modules
+helloworld/lib
+helloworld/test-result
+helloworld/logs
