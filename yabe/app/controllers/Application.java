@@ -23,4 +23,11 @@ public class Application extends Controller {
         render(frontPost, olderPosts);
     }
 
+    //If we try to send an id HTTP parameter that is not a valid number, the id variable value will
+    // be null and Play will automatically add a validation error to the errors container.
+    public static void show(Long id) {
+        Post post = Post.findById(id);
+        render(post);
+    }
+
 }
