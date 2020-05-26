@@ -1,0 +1,8 @@
+26 May 2020 13:58:06,576 INFO  ~ Starting C:\Users\alexj\IdeaProjects\Play-Tutorial\helloworld
+26 May 2020 13:58:06,763 INFO  ~ Module docviewer is available (C:\Program Files\play-1.5.3\modules\docviewer)
+26 May 2020 13:58:07,222 WARN  ~ You're running Play! in DEV mode
+26 May 2020 13:58:07,487 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+26 May 2020 13:58:25,279 INFO  ~ HikariPool-1 - Starting...
+26 May 2020 13:58:25,298 INFO  ~ HikariPool-1 - Start completed.
+26 May 2020 13:58:25,313 INFO  ~ Connected to jdbc:h2:mem:play for default
+26 May 2020 13:58:26,128 INFO  ~ Application 'helloworld' is now started !
