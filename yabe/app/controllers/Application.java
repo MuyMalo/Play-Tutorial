@@ -2,6 +2,7 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
+import play.data.validation.*;
 
 import java.util.*;
 
@@ -30,10 +31,14 @@ public class Application extends Controller {
         render(post);
     }
 
-    //reuse addComment() from Post class
-    public static void postComment(Long postId, String author, String content) {
+    //post comment + validation + success message
+    public static void postComment(Long postId, @Required String author, @Required String content) {
         Post post = Post.findById(postId);
+        if(validation.hasErrors()) {
+            render("Application/show.html", post);
+        }
         post.addComment(author, content);
+        flash.success("Thanks for posting %s", author);
         show(postId);
     }
 
