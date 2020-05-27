@@ -4,6 +4,7 @@ import play.mvc.*;
 import play.mvc.Http.*;
 import models.*;
 
+//FunctionalTest supplies useful utility helpers
 public class ApplicationTest extends FunctionalTest {
 
     @Test
@@ -11,7 +12,14 @@ public class ApplicationTest extends FunctionalTest {
         Response response = GET("/");
         assertIsOk(response);
         assertContentType("text/html", response);
-        assertCharset(play.Play.defaultWebEncoding, response);
+        assertCharset("utf-8", response);
     }
-    
+
+    @Test
+    public void testAdminSecurity() {
+        Response response = GET("/admin");
+        assertStatus(302, response);
+        assertHeaderEquals("Location", "/login", response);
+    }
+
 }
