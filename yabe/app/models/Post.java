@@ -42,16 +42,23 @@ public class Post extends Model {
         this.save();
         return this;
     }
-    
+
     public Post tagItWith(String name) {
         tags.add(Tag.findOrCreateByName(name));
         return this;
     }
-
+    //legacy style query parameter: ? changed to ?1
     public static List<Post> findTaggedWith(String tag) {
         return Post.find(
-                "select distinct p from Post p join p.tags as t where t.name = ?", tag
+                "select distinct p from Post p join p.tags as t where t.name = ?1", tag
         ).fetch();
+    }
+
+    //used to find posts with several tags
+    public static List<Post> findTaggedWith(String... tags) {
+        return Post.find(
+                "select distinct p from Post p join p.tags as t where t.name in (:tags) group by p.id, p.author, p.title, p.content,p.postedAt having count(t.id) = :size"
+        ).bind("tags", tags).bind("size", tags.length).fetch();
     }
 
     //got an error about using just ? instead of ?1

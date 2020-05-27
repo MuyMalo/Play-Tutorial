@@ -35,6 +35,11 @@ public class Application extends Controller {
         render(post, randomID);
     }
 
+    public static void listTagged(String tag) {
+        List<Post> posts = Post.findTaggedWith(tag);
+        render(tag, posts);
+    }
+
     //post comment + validation for form and captcha + success message
     public static void postComment(
             Long postId,
