@@ -4,18 +4,26 @@ import java.util.*;
 import javax.persistence.*;
 
 import play.db.jpa.*;
+import play.data.validation.*;
 
 @Entity
 public class Post extends Model {
+
+    @Required
     public String title;
+
+    @Required
     public Date postedAt;
 
     //large text database type
     @Lob
+    @Required
+    @MaxSize(10000)
     public String content;
 
     //@ManyToOne used so each post is authored by single User, and each User
     //can author several Post instances
+    @Required
     @ManyToOne
     public User author;
 
